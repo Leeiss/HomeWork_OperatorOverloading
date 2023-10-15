@@ -1,5 +1,6 @@
-#pragma once 
+#pragma once
 #include <cmath>
+#include <iostream>
 #define EPS 1e-10
 
 /*
@@ -21,11 +22,30 @@ ImNumber(double real, double im);
 */
 
 
-class ImNumber{
+class ImNumber {
+private:
     double real;
     double im;
+
+public:
     ImNumber();
     ImNumber(double real, double im);
-    bool operator=(const ImNumber& num)const;
-    const double phi();
+    
+    double phi() const;
+    
+    ImNumber operator+(const ImNumber& num) const;
+    ImNumber operator-(const ImNumber& num) const;
+    ImNumber operator*(const ImNumber& num) const;
+    ImNumber operator/(const ImNumber& num) const;
+    ImNumber& operator+=(const ImNumber& num);
+    ImNumber& operator-=(const ImNumber& num);
+    ImNumber& operator*=(const ImNumber& num);
+    ImNumber& operator/=(const ImNumber& num);
+    bool operator!=(const ImNumber& num) const;
+    bool operator==(const ImNumber& num) const;
+    bool operator<(const ImNumber& num) const;
+    ImNumber operator!() const;
+    double operator()() const;
+    
+    friend std::ostream& operator<<(std::ostream& out, const ImNumber& num);
 };
